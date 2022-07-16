@@ -21,9 +21,7 @@ db.processor = require("./processor.model")(sequelize, Sequelize);
 db.ram = require("./ram.model")(sequelize, Sequelize);
 db.storage = require("./storage.model")(sequelize, Sequelize);
 
-db.type.hasMany(db.laptop, { as: "laptop"});
-db.laptop.belongsTo(db.type, {
-  foreignKey: "typeId", 
-  as: "type",
-});
+db.type.hasOne(db.laptop);
+db.laptop.belongsTo(db.type, {foreignKey: "type_id"});
+
 module.exports = db;

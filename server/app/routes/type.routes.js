@@ -12,5 +12,5 @@ module.exports = app => {
     // Delete a Tutorial with id
     router.delete("/:id", type.delete);
     // Create a new Tutorial
-    app.use('/api/type', router);
+    app.use('/api/types', router);
   };

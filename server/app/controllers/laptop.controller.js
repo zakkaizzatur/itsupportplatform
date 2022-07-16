@@ -14,6 +14,7 @@ exports.create = (req, res) => {
 
   // Create a Laptop
   const laptop = {
+    type: req.body.type_id,
     brand: req.body.brand,
     series: req.body.series,
     processor_type: req.body.processor_type,

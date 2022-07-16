@@ -9,6 +9,10 @@ export const CREATE_LAPTOP = 'CREATE_LAPTOP';
 export const DELETE_LAPTOP = 'DELETE_LAPTOP';
 export const UPDATE_LAPTOP = 'UPDATE_LAPTOP';
 
+export const GET_TYPE_LIST = 'GET_TYPE_LIST';
+export const CREATE_TYPE = 'CREATE_TYPE';
+export const DELETE_TYPE = 'DELETE_TYPE';
+
 export const getBrands = () => async (dispatch) => {
     try {
         const { data } = await api.fetchBrands();
@@ -67,6 +71,33 @@ export const updateLaptop = (id, updatedLaptop) => async (dispatch) => {
     try {
         const {data} = await api.updateLaptop(id, updatedLaptop);
         dispatch({ type: UPDATE_LAPTOP, payload: data })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getType = () => async (dispatch) => {
+    try {
+        const { data } = await api.fetchType();
+        dispatch({ type: GET_TYPE_LIST, payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const createType = (type) => async (dispatch) => {
+    try {
+        const { data } = await api.createType(type);
+        dispatch({ type: CREATE_TYPE, payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteType = (id) => async (dispatch) => {
+    try {
+        await api.deleteType(id);
+        dispatch({ type: DELETE_TYPE, payload: id });
     } catch (error) {
         console.log(error);
     }

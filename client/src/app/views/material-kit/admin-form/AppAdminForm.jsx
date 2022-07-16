@@ -6,7 +6,9 @@ import StepperForm from "./StepperForm";
 import FormAdminLaptop from "./FormAdminLaptop";
 import AutoCompleteFormDialog from "./test";
 import LaptopPCTable from "../tables/TestMaterialTable";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getType } from "app/redux/actions/DataPerangkatActions";
 
 const Container = styled("div")(({ theme }) => ({
   margin: "30px",
@@ -17,9 +19,17 @@ const Container = styled("div")(({ theme }) => ({
   },
 }));
 
-const type_options = ["Laptop", "Personal Computer", "Monitor", "Mouse", "Keyboard"]
-
 const AppAdminForm = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getType());
+  },);
+
+  const data = useSelector(state => state.dataperangkat);
+
+  const type_options = (data.map(x => x.type_name));
 
   const [type, setType] = useState('');
 

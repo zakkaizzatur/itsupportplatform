@@ -14,5 +14,9 @@ export const fetchLaptop = () => API.get('/laptops');
 export const createLaptop = (newLaptop) => API.post('/laptops', newLaptop);
 export const deleteLaptop = (id) => API.delete(`laptops/${id}`);
 export const updateLaptop = (id, updatedLaptop) => API.put(`laptops/${id}`, updatedLaptop);
+export const fetchType = () => API.get('/types');
+export const createType = (newType) => API.post('/types', newType);
+export const deleteType = (id) => API.delete(`types/${id}`);
+
 
 export default API;

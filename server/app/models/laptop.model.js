@@ -1,5 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
     const Laptop = sequelize.define("laptop", {
+      type_id: {
+        type: Sequelize.SMALLINT
+      },
       brand: {
         type: Sequelize.STRING
       },
@@ -28,5 +31,6 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
     });
+
     return Laptop;
   };
